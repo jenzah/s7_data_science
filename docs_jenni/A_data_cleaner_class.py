@@ -22,99 +22,16 @@ class DataCleaner:
         
         self.TARGET_COLUMN = "ALLOCATED DIVISION"
         
-        self.COLS_TO_KEEP = ['PBS NODE', 'ELEMENTARY SYSTEM', 'ECS CODE', #'DESCRIPTION',
-               'BUILDING CODE', 'CONSUMER ROOM', 'REQUIRED ELECTRICAL DIV', 'ELECTRICAL LOAD TYPE',
-            #    'REQUIRED VOLTAGE', 'PN - RATED POWER [kW]',
-               'REQUIRED TYPE OF VOLTAGE', 'REQUIRED POWER', 'BELONGS TO PACKAGE',
-               'PACKAGE ECS CODE', 'HEATER RESISTOR FOR MOTOR', 'INTERLOCKED LOADS',
-               'MULTIPLE POWER SUPPLY', 'MAINTENANCE STATE A', 'MAINTENANCE STATE B',
-               'MAINTENANCE STATE C', 'MAINTENANCE STATE D', 'MAINTENANCE STATE E',
-               'MAINTENANCE STATE F', 'OPERATED BY MOBILE SOURCE', 'I&C ORDER',
-               'MOTOR BEHAVIOR ON VOLTAGE LOSS', 'OPERATED WINTER', 'OPERATED SUMMER', #'ADDITIONAL REQUIREMENTS',
-               'FUNC DESIGN REPORT', 'ELECTRICAL DATA MATURITY', 'ORDER PRIORITY MODULE NEEDED',
-               'CONTAINMENT ISOLATION VALVES', 'SAFETY CLASS', 'ELECTRICAL REQ',
-               'SEISMIC REQUIREMENT DBH', 'SEISMIC REQUIREMENT DEH',
-               'EARTHQUAKES OPERABILITY', 'OPERATION NORMAL SUPPLY',
-               'OPERATION AUXILIARY SUPPLY', 'ELEC BACK UP LOOP', 'ELEC BACK UP SBO',
-               'ELEC BACK UP SA', 'UNINTERRUPTED POWER SUPPLY',
-            #    'EFFICIENCY AT PN [%]', 'POWER FACTOR (COS PHI) AT PN', 'EFFICIENCY AT PU [%]', 'POWER FACTOR (COS PHI) AT PU',  ## violet blue
-               'ALLOCATED DIVISION', 'POWER SOURCE ECS CODE', # 'ALLOCATED VOLTAGE', 'POWER SOURCE BUILDING CODE',  ## last 2 is defined at the same time as target
-               'SWITCHING DEVICE ECS CODE', 'SWITCHING DEVICE TYPE']
+        self.COLS_TO_KEEP = []
         
         self.EXPECTED_VALUES = {
-            "REQUIRED ELECTRICAL DIV" : [
-                "unset", "DIV1", "DIV2", "DIV3", "DIV4", "DIV9", "DIV1 or DIV2", "DIV1 or DIV3", "DIV2 or DIV3", "DIV1 or DIV2 or DIV3", "NA", "LATER"
-                ],
-            "ELECTRICAL LOAD TYPE" : [
-                "unset", "CONTROL VALVE", "ON-OFF VALVE", "MOTOR 1 DIRECTION 1 SPEED", "MOTOR 1 DIRECTION 2 SPEEDS", "MOTOR 2 DIRECTIONS",
-                "INTELLIGENT CONTROL VALVE", "INTELLIGENT ON-OFF VALVE", "SOLENOID VALVE", "HEATER FOR MOTOR", "HEATER FOR PROCESS", "HEATER FOR HVAC",
-                "ELECTRICAL CUBICLE", "BUILDING BOARD", "FINAL BOARD", "ELECTRICAL BOX", "SPEED-VARIATOR", "POWER-CONVERTER", "RECTIFIER", "INVERTER",
-                "INCOMING", "OUTGOING", "SWITCHBOARD AUXILIARY", "TRANSFORMER", "BATTERY", "MOBILE", "NA", "LATER", "BLACK BOX", "SUBDISTRIBUTION MASTER",
-                "SUBDISTRIBUTION SLAVE", "MOTOR", "HEATER", "SUBDISTRIBUTION"
-                ],
-            "REQUIRED VOLTAGE": ["unset", "10000", "690", "400", "230", "220", "125", "48", "24", "NA", "LATER"],
-            "REQUIRED TYPE OF VOLTAGE": ["unset", "AC1", "AC2", "AC3", "AC3N", "DC", "NA", "LATER"],
-            "BELONGS TO PACKAGE": ["unset", "YES", "NO", "LATER", "NA"],
-            "HEATER RESISTOR FOR MOTOR": ["unset", "YES", "NO", "LATER", "NA"],
-            "MULTIPLE POWER SUPPLY": ["unset", "YES", "NO", "LATER", "NA"],
-            "MAINTENANCE STATE A": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "MAINTENANCE STATE B": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "MAINTENANCE STATE C": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "MAINTENANCE STATE D": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "MAINTENANCE STATE E": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "MAINTENANCE STATE F": ["unset", "YES", "NO", "LATER", "NA", "CONDITIONAL"],
-            "I&C ORDER": ["unset", "CENTRALIZED I&C", "DEDICATED I&C", "CENTRALIZED I&C AND DEDICATED I&C", "NO", "LATER", "NA", "CENTRALIZED I&C AND PRIORITIZED DEDICATED I&C"],
-            "MOTOR BEHAVIOR ON VOLTAGE LOSS": ["CASE 1", "CASE 2", "CASE 2a", "CASE 3", "CASE 4", "unset", "NA", "LATER"],
-            "OPERATED WINTER": ["unset", "0", "1", "PERMANENT", "INTERMITTENT", "RARE", "NONE", "LATER", "NA"],
-            "OPERATED SUMMER": ["unset", "0", "1", "PERMANENT", "INTERMITTENT", "RARE", "NONE", "LATER", "NA"],
-            "ELECTRICAL DATA MATURITY": ["0", "1", "2", "3", "4", "5", "unset", "NA", "LATER"],
-            "ORDER PRIORITY MODULE NEEDED": ["unset", "YES", "NO", "LATER", "NA"],
-            "CONTAINMENT ISOLATION VALVES": ["ICIV", "OCIV", "ICIV-like", "OCIV-like", "NO", "LATER", "unset", "NA",],
-            "SAFETY CLASS": ["S1", "S2", "S3", "NC"],
-            "ELECTRICAL REQ": ["C1", "C2", "C3", "NR"],
-            "SEISMIC REQUIREMENT DBH": ["O-OPERABILITY", "F-FUNCTIONAL CAPABILITY", "I-INTEGRITY", "S-STABILITY"],
-            "SEISMIC REQUIREMENT DEH": ["O-OPERABILITY", "F-FUNCTIONAL CAPABILITY", "I-INTEGRITY", "S-STABILITY"],
-            "EARTHQUAKES OPERABILITY": ["unset", "YES", "NO", "LATER", "NA"],
-            "OPERATION NORMAL SUPPLY": ["YES", "PT", "LATER", "NO", "unset", "NA"],
-            "OPERATION AUXILIARY SUPPLY": ["unset", "YES", "NO", "LATER", "NA"],
-            "ELEC BACK UP LOOP": ["YES FOR SAFETY", "YES FOR PLANT AVAILABILITY", "NO", "LATER", "NA", "unset"],
-            "ELEC BACK UP SBO": ["YES", "NO", "LATER", "NA", "unset"],
-            "ELEC BACK UP SA": ["YES", "NO", "LATER", "NA", "unset"],
-            "UNINTERRUPTED POWER SUPPLY": ["YES", "MANUAL RESUPPLY", "NO", "LATER", "NA", "unset"],
-            "ALLOCATED DIVISION": ["DIV1", "DIV2", "DIV3", "DIV4", "DIV9", "LATER", "NA", "unset"],
-            "ALLOCATED VOLTAGE": ["unset", "10000", "690", "400", "230", "220", "125", "48", "24", "NA", "LATER"],
-            "SWITCHING DEVICE TYPE": ["unset", "CB", "FC", "FSD", "SD", "SD+DIODE", "NA", "LATER"]
+            "REQUIRED ELECTRICAL DIV" : []
         }
 
-        self.BOOLEAN_COLUMNS = [
-            'BELONGS TO PACKAGE',
-            'HEATER RESISTOR FOR MOTOR',
-            'MULTIPLE POWER SUPPLY',
-            'MAINTENANCE STATE A',
-            'MAINTENANCE STATE B',
-            'MAINTENANCE STATE C',
-            'MAINTENANCE STATE D',
-            'MAINTENANCE STATE E',
-            'MAINTENANCE STATE F',
-            'OPERATED BY MOBILE SOURCE',
-            'OPERATED WINTER',
-            'OPERATED SUMMER',
-            'ORDER PRIORITY MODULE NEEDED',
-            'EARTHQUAKES OPERABILITY',
-            'OPERATION AUXILIARY SUPPLY',
-            'ELEC BACK UP SBO',
-            'ELEC BACK UP SA'
-        ]
+        self.BOOLEAN_COLUMNS = []
 
         # Floats
-        self.NUMERIC_COLUMNS = [
-            'REQUIRED POWER',
-            # 'PN - RATED POWER [kW]',
-            # 'EFFICIENCY AT PN [%]',
-            # 'POWER FACTOR (COS PHI) AT PN',
-            # 'EFFICIENCY AT PU [%]',
-            # 'POWER FACTOR (COS PHI) AT PU'
-        ]
+        self.NUMERIC_COLUMNS = []
 
 
     @property
