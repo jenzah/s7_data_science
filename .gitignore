@@ -1,4 +1,4 @@
 /data/raw
 /data
 full_2024.csv
-.venv_jupyter
+.venv_jupyter/
