@@ -1,14 +1,14 @@
 # Projet d'Analyse Immobilière
 
-## Journal de bord
+## Données sources
+### Demandes de valeurs foncières
+[Demandes de valeurs foncières géolocalisées](https://files.data.gouv.fr/geo-dvf/latest/csv/2024/full.csv.gz)
 
-### 2025-10-04
-- Création des fichiers de notebooks Jupyter
-- Le contenu représente des suggestions
-- **Note importante** : Veuillez créer des fonctions pour chaque étape, c'est plus propre que du code en vrac
-
-## À venir
-<!-- Ajoutez les prochaines étapes ici -->
+### Indicateurs de loyer
+[Loyer appartement](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153050/pred-app-mef-dhup.csv)
+[Loyer appartement T1-T2](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153048/pred-app12-mef-dhup.csv)
+[Loyer appartement T3+](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-145658/pred-app3-mef-dhup.csv)
+[Loyer maison](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-145700/pred-mai-mef-dhup.csv)
 
 
 # Tutoriel de Base Git
