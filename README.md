@@ -4,6 +4,9 @@
 ### Demandes de valeurs foncières
 [Demandes de valeurs foncières géolocalisées](https://files.data.gouv.fr/geo-dvf/latest/csv/2024/full.csv.gz)
 
+### Communes de France
+[Base de codes postaux](https://www.data.gouv.fr/api/1/datasets/r/dbe8a621-a9c4-4bc3-9cae-be1699c5ff25))
+
 ### Indicateurs de loyer
 [Loyer appartement](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153050/pred-app-mef-dhup.csv)
 [Loyer appartement T1-T2](https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153048/pred-app12-mef-dhup.csv)
