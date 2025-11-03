@@ -27,7 +27,7 @@ def load_data(path: str) -> pd.DataFrame:
     # (on garde quand même pour les autres graphiques)
     return df
 
-df = load_data("dvf_idf_clean.csv")
+df = load_data("data/cleaned/dvf_idf_clean.csv")
 
 st.title("🏡 Marché Immobilier – Île-de-France (2024)")
 
